@@ -1,0 +1,54 @@
+
+
+we are participating quantum hackathon Amaravati, I need a website for  quantum job tracking using IBM quantum ,technologies :frontend-html,css,js,seaborun ,plotly,tailwind,react backend:FAstapi,PostgreSQL,google outh2,qiskit,etc...
+
+website instruction:
+ landing page-we should name of the website at center on landing page and 3 to 4 lines info about website below the title name and it should 2 button of know more and analyse and use modern design like hackerank and best animation and website design should be top notch in, like stars falling  (landing , login pages only )  ,
+ .when knowmore button  is clicked the GitHub repo of the total website should open /hyperlink of GitHub link
+ .when analyze button is clicked the login page should open in take login credential and store in postgreSQL and if the user is already  signup show him login buttom  use google login terchnology and if user is not already sign up show in sign up to "continue with google"
+ . for new user if he has signup for first time ask him question about himself (MCQs) and store their data the questions should be  (entering his name (take the name and use it in website like hello "Hisname"(not mCq use text input) ,ask the user whether he is a working professional or a student in mcq as store it " , if the user has click on student take the details .like place of study,college name ,year of starting and pass out ,the course he is studying ,if the job working professional is clicked then show question like which year has he joined in job, which has he worked for, what was his position in company and ask him his salary (in drop down(give a approx number in INR in per annum),place he would like go for work) , after each question the user should next button and the question will be the render , reaching the last question the user will submit button , to show the user how many question are left and which question he is in show a progress bar of question number,also take mobile numbef with countries drop down menu on side ,when submitted the enttire data should goes in database (postgreSql)
+  
+ .after clicking the sumbit button ,show him the available jobs on quantum technologies
+ .... how?
+ ....You are to write a FastAPI backend service in Python that fetches live/public IBM Quantum Computing jobs using the IBM Qiskit API (or their REST API if available) and stores them in PostgreSQL without blocking user requests.
+Requirements:
+PostgreSQL Structure:
+jobs_main table: Stores the latest job data served to users.
+jobs_staging table: Temporary table for new jobs fetched in the latest update cycle.
+Data Flow:
+When fetching jobs, store them in jobs_staging first.
+After all jobs are successfully stored in jobs_staging, replace (truncate and copy) jobs_main with the contents of jobs_staging in a single transaction.
+This ensures the frontend never waits for the scraping process to finish.
+Job Data Columns (minimum):
+Job ID
+Backend Name
+Status (queued, running, done, etc.)
+Creation Date
+Execution Time (if available)
+Shots (if available)
+Performance:
+Store jobs in batches to reduce DB overhead.
+Use async DB operations with SQLAlchemy or asyncpg.
+No user should wait for job fetching — they should always see data from jobs_main.
+Scheduler:
+Use APScheduler or asyncio background tasks to run the fetch process periodically (e.g., every 30 mins).
+The fetch task runs independently from the request-handling threads.
+FastAPI Endpoints:
+GET /jobs: Return data from jobs_main in JSON.
+POST /refresh: (Admin only) Trigger an immediate refresh cycle.
+IBM Quantum API Authentication:
+Accept an API key from environment variables.
+Handle rate limits gracefully with retries and exponential backoff.
+Testing:
+If no IBM Quantum API key is available, mock the API response with dummy job data for testing.
+Output the entire Python code with:
+main.py containing the FastAPI app, routes, and scheduler logic.
+SQLAlchemy models for jobs_main and jobs_staging.
+A function fetch_ibm_jobs() to query the API, transform data, and store it in PostgreSQL.
+Proper comments explaining each step.
+
+.after submitting the question from open up the home in which i need a profileicon , job offer companies in a  sliding floating windows,
+when clicked on the comapny the availabe jobs/ also in form redirect to that job application online in that company should open ,also give the job rating to that position in the company and expecting salary, show name of the website at top left corner 
+
+
+. when clicked on profileicon take his resume as inputwihth the detaiis prols ,show the fetaures box in which it contains dasfile  
